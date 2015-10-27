@@ -20,7 +20,7 @@ module Zola
     end
     def output_message
       File.open(@output_file, "w") { |f| f.write(@processed_message)}
-      puts "Created #{@output_file} with the cracked #{@key} and #{@date}"
+      puts "Cracked #{@input_file} with the cracked #{@key} and date #{@date}"
     end
   end
 end

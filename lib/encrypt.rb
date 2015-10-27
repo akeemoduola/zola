@@ -70,7 +70,7 @@ module Zola
 
     def output_message
       File.open(@output_file, "w") { |f| f.write(@processed_message)}
-      puts "Created #{@output_file} with #{@key} and #{@date}"
+      puts "Created #{@output_file} with the key #{@key} and date #{@date}"
     end
   end
 end
