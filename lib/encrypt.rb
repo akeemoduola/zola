@@ -1,7 +1,6 @@
 module Zola
   class Encryptor
-    attr_accessor :input_file, :output_file, :message, :key, :date,
-                  :keys, :processed_message
+    attr_accessor :input_file, :output_file, :message, :key, :date,:keys, :processed_message
 
     def initialize(input_file, output_file)
       @input_file = input_file
