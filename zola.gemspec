@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["oakeem"]
   spec.email         = ["akeem.oduola@yahoo.com"]
 
-  spec.summary       = %q{ Transmit your message securely bu using zola cipher engine.}
-  spec.description   = %q{ With zola gem, you have a tool to encrypt, decrypt and crack messages to your heart's desire.}
+  spec.summary       = %q{ Write a short summary, because Rubygems requires one.}
+  spec.description   = %q{ Write a longer description or delete this line.}
   spec.homepage      = "https://github.com/andela-aoduola/zola"
   spec.license       = "MIT"
 
