@@ -52,7 +52,11 @@ module Zola
     end
 
     def read_in_message
-      @message = File.open(@input_file, "r") { |f| f.read}
+      if File.exist?(@input_file)
+        @message = File.open(@input_file, "r") { |f| f.read}
+      else
+        Kernel.abort("ABORTED! File: #{@input_file} Not Found")
+      end
     end
 
     def process_message
