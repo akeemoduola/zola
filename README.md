@@ -1,6 +1,7 @@
 # Zola
 [![Code Climate](https://codeclimate.com/github/andela-aoduola/zola/badges/gpa.svg)](https://codeclimate.com/github/andela-aoduola/zola)
-<a href="https://codeclimate.com/github/andela-aoduola/zola/coverage"><img src="https://codeclimate.com/github/andela-aoduola/zola/badges/coverage.svg" /></a><br />
+<a href="https://codeclimate.com/github/andela-aoduola/zola/coverage"><img src="https://codeclimate.com/github/andela-aoduola/zola/badges/coverage.svg" /></a>
+[![Coverage Status](https://coveralls.io/repos/andela-aoduola/zola/badge.svg?branch=master&service=github)](https://coveralls.io/github/andela-aoduola/zola?branch=master)<br />
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/zola`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
