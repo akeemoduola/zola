@@ -1,4 +1,3 @@
-# coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'zola/version'
@@ -38,5 +37,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-nav"
   spec.add_development_dependency "wdm", "~> 0.1.1"
   spec.add_development_dependency "coveralls"
-  spec.add_test_dependency "codeclimate-test-reporter"
+  spec.add_development_dependency "codeclimate-test-reporter"
 end
