@@ -55,7 +55,15 @@ module Zola
       if File.exist?(@input_file)
         @message = File.open(@input_file, "r") { |f| f.read}
       else
-        Kernel.abort("ABORTED! File: #{@input_file} Not Found")
+        Kernel.abort("ABORTED! File: #{@input_file} Not Found in current directory")
+      end
+    end
+
+    def check_message
+      @message.downcase!
+      pattern = /[^a-z0-9 ,.]/
+      if !(@message =~ pattern).nil?
+        Kernel.abort("ABORTED! Invalid character(s) in message")
       end
     end
 

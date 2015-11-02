@@ -17,6 +17,7 @@ module Zola
       File.open("test_message.txt", "w") {|f| f.write("hello, world..end..")}
      @e = Zola::Encryptor.new("test_message.txt", "encrypted.txt")
      @e.read_in_message
+     @e.check_message
      @e.get_date
      srand(67809)
      @e.get_key
@@ -36,6 +37,18 @@ module Zola
         expect { @e1.read_in_message }.to raise_error(SystemExit)
       end
     end
+
+    describe "#check_message" do
+      before do
+        File.open("test_message_2.txt", "w") {|f| f.write("Hello, World!..end..")}
+        @e2 = Zola::Encryptor.new("test_message_2.txt", "encrypted.txt")
+        @e2.read_in_message
+      end
+      it "checks if message has valid characters" do
+        expect { @e2.check_message }.to raise_error(SystemExit)
+      end
+    end
+
     describe "#get_key" do
       it "returns a five digit random number as a String" do
         expect(@e.key).to eql("31774")
@@ -77,7 +90,7 @@ module Zola
 
     describe "#process_message" do
       it "returns an encrypted message" do
-        expect(@e.instance_variable_get(:@processed_message)).to eql("9xmmgi.xg7methfo5h,")
+        expect(@e.instance_variable_get(:@processed_message)).to eql("cxmmji.xj7mewhfo8h,")
       end
     end
 

@@ -13,6 +13,7 @@ output = ARGV[1]
 
 e = Zola::Encryptor.new(input, output)
 e.read_in_message
+e.check_message
 e.get_date
 e.get_key
 e.generate_keys
