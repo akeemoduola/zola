@@ -8,9 +8,16 @@ module Zola
       @date = File.ctime(input_file).strftime("%d%m%y").to_i
     end
     def cipher(rotation)
-      characters =  [*'0'..'9', *'a'..'z',' ','.',","]
-      rotated_characters = characters.rotate(rotation)
-      Hash[rotated_characters.zip(characters)]
+      rotated_characters = @characters.rotate(rotation)
+      Hash[rotated_characters.zip(@characters)]
+    end
+    def execute
+      read_in_message
+      get_key
+      get_date
+      generate_keys
+      process_message
+      output_message
     end
   end
 end

@@ -11,11 +11,4 @@ end
 input = ARGV[0]
 output = ARGV[1]
 
-e = Zola::Encryptor.new(input, output)
-e.read_in_message
-e.check_message
-e.get_date
-e.get_key
-e.generate_keys
-e.process_message
-e.output_message
+Zola::Encryptor.new(input, output).execute

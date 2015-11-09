@@ -12,9 +12,4 @@ end
 input = ARGV[0]
 output = ARGV[1]
 
-e = Zola::Crack.new(input, output)
-e.read_in_message
-e.get_key
-e.get_date
-e.generate_keys
-e.crack_message
+Zola::Crack.new(input, output).execute

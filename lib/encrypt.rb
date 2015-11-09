@@ -10,10 +10,11 @@ module Zola
       @key = ""
       @date = 0
       @keys = []
+      @characters =  [*'0'..'9', *'a'..'z',' ','.',","]
     end
 
     def get_key
-      @key = (0...5).map { |i| rand((i == 0? 1 : 0)..9)}.join
+      @key = 5.times.map { Random.rand(9) }.join
     end
 
     def get_date
@@ -21,29 +22,28 @@ module Zola
     end
 
     def generate_keys
-       a_key = @key[0..1].to_i
-       b_key = @key[1..2].to_i
-       c_key = @key[2..3].to_i
-       d_key = @key[3..4].to_i
-
-       offset = (@date ** 2).to_s[-4..-1]
-       a_offset = offset[0].to_i
-       b_offset = offset[1].to_i
-       c_offset = offset[2].to_i
-       d_offset = offset[3].to_i
-
-       a_rotation = a_key + a_offset
-       b_rotation = b_key + b_offset
-       c_rotation = c_key + c_offset
-       d_rotation = d_key + d_offset
-
-       @keys = [a_rotation , b_rotation, c_rotation, d_rotation]
+      key = generate_key
+      offset = generate_offset
+      @keys << key[0] + offset[0]
+      @keys << key[1] + offset[1]
+      @keys << key[2] + offset[2]
+      @keys << key[3] + offset[3]
+      @keys
     end
-
+    def generate_key
+      key = []
+      key << @key[0..1].to_i
+      key << @key[1..2].to_i
+      key << @key[2..3].to_i
+      key << @key[3..4].to_i
+      key
+    end
+    def generate_offset
+      (@date ** 2).to_s.split(//).map(&:to_i).last(4)
+    end
     def cipher(rotation)
-      characters =  [*'0'..'9', *'a'..'z',' ','.',","]
-      rotated_characters = characters.rotate(rotation)
-      Hash[characters.zip(rotated_characters)]
+      rotated_characters = @characters.rotate(rotation)
+      Hash[@characters.zip(rotated_characters)]
     end
 
     def process_letter(letter,rotation)
@@ -79,7 +79,15 @@ module Zola
       end
       @processed_message
     end
-
+    def execute
+      read_in_message
+      check_message
+      get_date
+      get_key
+      generate_keys
+      process_message
+      output_message
+    end
     def output_message
       File.open(@output_file, "w") { |f| f.write(@processed_message)}
       puts "Created #{@output_file} with the key #{@key} and date #{@date}"
