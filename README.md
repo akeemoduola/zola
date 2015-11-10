@@ -1,7 +1,8 @@
 # Zola
 [![Code Climate](https://codeclimate.com/github/andela-aoduola/zola/badges/gpa.svg)](https://codeclimate.com/github/andela-aoduola/zola)
 [![Coverage Status](https://coveralls.io/repos/andela-aoduola/zola/badge.svg?branch=master&service=github)](https://coveralls.io/github/andela-aoduola/zola?branch=master)<br />
-Welcome to the Zola gem!
+## Welcome to the Zola gem!
+
 Zola is an encryption engine for encrypting, decrypting, and cracking messages.
 The Zola gem can be used for encoding messages. It is built using the Ruby programming language and as a command line tool.
 It contains an encrypt ruby file that when called with two file names as command line arguments, it encrypts the first file and saves it in the other.
@@ -60,10 +61,6 @@ Example: To call encrypt on a message.txt file in my desktop folder
     $ encrypt message.txt encrypted.txt
 
     =>#Created encrypted.txt with the key 12345 and date 300815
-
-You can also write the absolute path of the file if you don't want to change working directory.
-
-    $ encrypt desktop/message.txt encrypted.txt
 
 ## Contributing
 
