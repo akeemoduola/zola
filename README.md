@@ -1,9 +1,35 @@
 # Zola
 [![Code Climate](https://codeclimate.com/github/andela-aoduola/zola/badges/gpa.svg)](https://codeclimate.com/github/andela-aoduola/zola)
 [![Coverage Status](https://coveralls.io/repos/andela-aoduola/zola/badge.svg?branch=master&service=github)](https://coveralls.io/github/andela-aoduola/zola?branch=master)<br />
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/zola`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to the Zola gem!
+Zola is an encryption engine for encrypting, decrypting, and cracking messages.
+The Zola gem can be used for encoding messages. It is built using the Ruby programming language and as a command line tool.
+It contains an encrypt ruby file that when called with two file names as command line arguments, it encrypts the first file and saves it in the other.
+It also contains a decrypt ruby file that when called with two file names as command line arguments, it decrypts the first file  with a user supplied key and saves it in the other.
+Lastly, zola includes a little twist where you can actually crack an encrypted file without a key.
 
-TODO: Delete this and the text above, and describe your gem
+## How the encryption works
+
+The encryption is based on rotation of letters based on a key and the date that message was sent. The character map is made up of all the lowercase letters, then the numbers, then space, then period, then comma.
+
+### The Key
+
+* Each message uses a unique encryption key
+* The key is five digits, like 41521
+* The first two digits of the key are the "A" rotation (41)
+* The second and third digits of the key are the "B" rotation (15)
+* The third and fourth digits of the key are the "C" rotation (52)
+* The fourth and fifth digits of the key are the "D" rotation (21)
+
+### The Offset
+
+* The date of message transmission is also factored into the encryption
+* Consider the date in the format DDMMYY, like 020315
+* Square the numeric form (412699225) and find the last four digits (9225)
+* The first digit is the "A offset" (9)
+* The second digit is the "B offset" (2)
+* The third digit is the "C offset" (2)
+* The fourth digit is the "D offset" (5)
 
 ## Installation
 
@@ -23,17 +49,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To use add the directory of the bin folder of this gem to your Systems Path/Environment variables.
+You can then call `encrypt`, `decrypt` or `crack`, on the file you want to work on, and also with a destination file name.
+File to be encrypted, decrypted or cracked must be in your working directory.
 
-## Development
+Example: To call encrypt on a message.txt file in my desktop folder
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+    $ cd desktop
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    $ encrypt message.txt encrypted.txt
+
+    =>#Created encrypted.txt with the key 12345 and date 300815
+
+You can also write the absolute path of the file if you don't want to change working directory.
+
+    $ encrypt desktop/message.txt encrypted.txt
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/zola. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+1. Fork it ( https://github.com/[andela-aoduola]/zola/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/[andela-aoduola]/zola. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
